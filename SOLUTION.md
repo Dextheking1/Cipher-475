@@ -101,6 +101,28 @@ units × 95 offsets — only trivial rotations of the message itself score), rai
 fence (6/7 rails), 10×10 spiral/columnar, 16×6 grid flips: nothing beyond
 chance-wording.
 
+## Round-2 closure (redo on the CORRECTED ciphertext + forensics)
+
+- Exhaustive plaintext-autokey re-run, lags 1–12 × {vigenère, variant, beaufort}
+  × seeds = every English word of seed-length L (up to 12 letters) + full 26^L for
+  L ≤ 3: **only** lag 6 / seed `primes` survives (18/21 word-slots); next-best is a
+  degenerate 10/21 (`primer`/`trimer` near-misses). The Beaufort variant with
+  `primes` yields "presents are important…" — a cute 10-slot shadow of the real
+  message, i.e. the author planted the theme word so hard it leaks in two modes.
+- Ciphertext-autokey family (p = c∓c[i−L], p = c[i−L]−c, lags 1–5, deterministic
+  seed-independent tails): every tail scores ≤2/21 word-slots → family dead.
+- Arithmetic keystreams p = c ∓ (a·i+b), all 26×26×3: dead (≤6/21).
+- Forensics on the image's actual carriers: all cleanly-seen labels (41,47,53,59,
+  73,83,91) render identically — 26-px height, mean luma 163–167, saturation
+  0.51–0.56 — so even the faked number is visually unmarked; petal rings measure
+  uniform per slot (±3 px = AA noise). The label regions polluted by galaxies
+  (43, 61, 67, 71, 79) contain no glyphs, verified visually at 3× boost.
+- Author's public surface (profile, blog benwebbuilds.vercel.app, other repos,
+  issues/comments): no puzzle mirror, no checker, no follow-up file published.
+
+**Verdict: the shipped artifacts are fully exhausted; there is no further
+mechanical layer in this repo.**
+
 ## Interpretation (strongest candidate for the "deeper" step)
 
 The README's phrase "Given in the puzzle hint 2" + the decrypted text's structure
