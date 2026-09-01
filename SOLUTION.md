@@ -178,3 +178,9 @@ for i, v in enumerate(C):
 print("".join(chr(97 + p) for p in P))
 # primesareimportantsquaresareimportantthestrideswetakeoftenrevealthemeaningofourlifeaswetakethem
 ```
+
+## Sibling-artifact check (final)
+
+Cipher-478's `puzzle (1).zip` was fetched and swept: zero occurrences of any
+475-related string (475/sacred/oracle/primes/shrimp) across the stored nested
+archive bytes; its published payload is unrelated. No cross-puzzle link exists.
