@@ -123,6 +123,26 @@ chance-wording.
 **Verdict: the shipped artifacts are fully exhausted; there is no further
 mechanical layer in this repo.**
 
+## Byte-level reproducibility audit (round 3 — closure)
+
+The zip and PNG were reconstructed with stock tooling and compared byte-for-byte:
+
+- `Python zipfile (ZIP_DEFLATED, default level) + PIL save(optimize=True)` reproduces
+  the oracle's compressed stream and the **entire 3,138,328-byte PNG deflate stream
+  identically**. The whole zip differs from a fresh Linux build in exactly 4 bytes,
+  all in central-directory metadata: `version made by` host byte (0 = Windows/FAT —
+  `ZipInfo` uses `os.name == 'nt'`) and the absence of the Unix `S_IFREG` bit in
+  `external_attr` (Windows `st_mode` = 0o644). The 1980-01-01 stamps are the DOS
+  epoch clamp. This is a vanilla `zipfile`-on-Windows artifact.
+- The oracle's 97-byte stream is likewise vanilla zlib output (reproducible at
+  levels 1–9; HCLEN=18 tree with zero-padded slack slot is stock zlib behavior).
+
+**Conclusion: every byte of every shipped file is canonical, reproducible
+tooling output. A stego carrier does not exist anywhere in this repo — not in
+pixels, bits, chunks, streams, headers, git objects, or positional structure.
+The puzzle contains exactly two meaningful objects: the autokey-encrypted hint
+sentence and the 12-number sacred ring in which 91 (= 7·13) is not prime.**
+
 ## Interpretation (strongest candidate for the "deeper" step)
 
 The README's phrase "Given in the puzzle hint 2" + the decrypted text's structure
