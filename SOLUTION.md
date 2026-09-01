@@ -143,8 +143,6 @@ pixels, bits, chunks, streams, headers, git objects, or positional structure.
 The puzzle contains exactly two meaningful objects: the autokey-encrypted hint
 sentence and the 12-number sacred ring in which 91 (= 7·13) is not prime.**
 
-## Interpretation (strongest candidate for the "deeper" step)
-
 The README's phrase "Given in the puzzle hint 2" + the decrypted text's structure
 show the plaintext IS a numbered hint-list:
   hint 1 = "primes are important" (→ the seed/ring),
@@ -152,19 +150,42 @@ show the plaintext IS a numbered hint-list:
   hint 3 = "the strides we take … reveal the meaning" (→ the autokey LAG itself:
   the message explains its own decryption).
 Under "dont overthink", every *data* layer is empty; what the hints teach is the
-mechanism of the cipher. Consistent with "This is a test for the one I want to
-make" and "That's the STARTING puzzle file", the real (test-)puzzle content the
-hints prepare for is not shipped in this repo — the follow-up exists only with
-the creator (Discord; cf. Cipher-478's "Solve this discord cipher posted"). If a
-one-line answer is demanded for 475 itself, the defensible deliverable is:
-
-> **The sacred ring is faked: 91 ≠ prime (7·13); the 12th sacred number must be 89.**
-> ("Primes are important." — and the oracle's autokey stride is 6, seeded by the theme.)
+mechanism of the cipher.
 
 ## Files
 
 - `Sacred_numbers.zip` → `Sacred_numbers/Sacred_numbers_Oracle` (119 B, the
   ciphertext above) and `Sacred_numbers/sacred_numbers.png`.
+
+## Interpretation (strongest candidate for the "deeper" step)
+
+All remaining search surfaces were exhausted in rounds 4–5: every autokey mode
+including ct-autokey and Beaufort, exhaustive dictionary/semantic seeds (unique
+solution confirmed at lag 6 `primes`), plaintext↔ciphertext self-coupling at all
+94 shifts (only the trivial autokey identity survives), per-label font/color/
+saturation forensics (uniform — even the fake is visually unmarked; 91's falsity
+is purely mathematical), star-alignment statistics (pure chance), the author's
+linux.do/2048 fork (no custom content), GitHub forks/stars/discussions/wiki
+(empty on both repos), and web mirror search of the exact ciphertext tokens
+(nothing posted anywhere).
+
+### Final answer
+
+Layer 1 (unique, machine-proven):
+> `primes are important. squares are important. the strides we take often reveal the meaning of our life as we take them.`
+> — plaintext-autokey, lag 6 ("the stride"), primed with the theme `primes`; the primer
+> self-encrypts (Eiqyik = primes+primes), the sentence is a self-describing hint list,
+> and every shipped byte is canonical tool output — so the "hard/AI-proof" surface is:
+
+1. **transcription fidelity** — one wrong letter derails the autokey forever (this exact
+   failure wasted an entire earlier session), and
+2. **the ring's single lie**: `91 = 7·13` is not prime; the true 12th sacred number is
+   **89** (the 24th prime; as nth-prime↔letters the ring is just M…X — the ring is a
+   lesson, not a key).
+
+If the creator requires a submitted string, the defensible candidates, in order:
+`89` · `91 is not prime` · the corrected sequence `41 43 47 53 59 61 67 71 73 79 83 89` ·
+the full plaintext (sentence-cased). Everything else is provably absent from this repo.
 
 ## Reproduce
 
