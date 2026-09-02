@@ -320,3 +320,10 @@ zip, re-scanning every dictionary-word seed x lag 2-12 x autokey mode:
   own instruction plus the byte-exact round-trip, which closes any loophole.
 
 Audit scripts: work/audit13.py. No new layer found; none constructible.
+
+## Round 14 — "shrimple" (the README's only non-dictionary word) tested as seed, null
+
+If "only a human who KNEW how it worked" meant a meme-slang seed no English
+wordlist contains, `shrimple`/`supershrimple`/`primeshrimple` would be it.
+All autokey (lag=len) and fixed Vigenere/Beaufort/variant modes: pure noise.
+`primes` remains the unique key (round-13 independent re-proof stands).
