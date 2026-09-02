@@ -53,7 +53,8 @@ def load_ct():
     except (OSError, KeyError):
         raw = None
     if raw is None:
-        print("[!] zip not found, using embedded ciphertext copy")
+        if not (sys and "--plain" in getattr(sys, "argv", [])):
+            print("[!] zip not found, using embedded ciphertext copy")
         return CT_EMBED
     ct = "".join(chr(97 + v) for v in letters(raw))
     assert ct == CT_EMBED, "zip ciphertext differs from embedded copy!"
@@ -65,6 +66,8 @@ def is_prime(n):
 
 
 def main():
+    plain = "--plain" in sys.argv  # final answer as bare plaintext only
+    say = (lambda *a, **k: None) if plain else print
     ok = True
     ct_str = load_ct()
     ct = letters(ct_str)
@@ -74,11 +77,11 @@ def main():
     # --- 1. the one true reading -------------------------------------------
     P = autokey(ct, key, LAG)
     pt = "".join(chr(97 + v) for v in P)
-    print(f"[1] autokey lag-{LAG} seed '{KEY}':\n    {pt}")
+    say(f"[1] autokey lag-{LAG} seed '{KEY}':\n    {pt}")
     ok &= pt.replace(" ", "") == PT_EXPECT.replace(" ", "")
-    print(f"    matches expected plaintext : {pt.replace(' ','') == PT_EXPECT.replace(' ','')}")
+    say(f"    matches expected plaintext : {pt.replace(' ','') == PT_EXPECT.replace(' ','')}")
     re_enc = enc_from(P, key, LAG)
-    print(f"    re-encrypts byte-exact     : {re_enc == ct}")
+    say(f"    re-encrypts byte-exact     : {re_enc == ct}")
     ok &= re_enc == ct
 
     # --- 2. uniqueness (documented in SOLUTION.md rounds 1-2) ----------------
@@ -88,21 +91,29 @@ def main():
     # round - no Vigenere/Beaufort/variant, fixed or autokey, yields anything.
 
     # --- 3. the ring: eleven primes and a fake ------------------------------
-    print("[3] ring sectors:", RING)
+    say("[3] ring sectors:", RING)
     bad = [n for n in RING if not is_prime(n)]
-    print(f"    non-primes found           : {bad}"
+    say(f"    non-primes found           : {bad}"
           + (f"  ({bad[0]} = {min(p for p in range(2,bad[0]+1) if bad[0]%p==0)}"
              f"*{bad[0]//min(p for p in range(2,bad[0]+1) if bad[0]%p==0)})" if bad else ""))
     gaps = [RING[i+1] - RING[i] for i in range(len(RING)-1)]
-    print(f"    gaps                       : {gaps}   <- stride pattern breaks at the end")
+    say(f"    gaps                       : {gaps}   <- stride pattern breaks at the end")
     true12 = 89
     ok &= not is_prime(91) and is_prime(true12) and RING[:11] == [41,43,47,53,59,61,67,71,73,79,83]
-    print(f"    true 12th (next prime after 83): {true12}")
-    print(f"    sum with fake = {sum(RING)} = 12*64   (the 'squares are important' wink: 64=8^2)")
+    say(f"    true 12th (next prime after 83): {true12}")
+    say(f"    sum with fake = {sum(RING)} = 12*64   (the 'squares are important' wink: 64=8^2)")
+    say()
 
-    print()
-    print(f"ANSWER: {true12}" if ok else "VERIFICATION FAILED")
-    return 0 if ok else 1
+    if not ok:
+        print("VERIFICATION FAILED", file=sys.stderr)
+        return 1
+    # The final answer, bare plaintext: the corrected 12th sacred number.
+    print(true12)
+    if plain:
+        return 0
+    # and the recovered sentence in full, plain text, for reference:
+    print('primes are important. squares are important. the strides we take often reveal the meaning of our life as we take them.')
+    return 0
 
 
 if __name__ == "__main__":
