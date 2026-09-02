@@ -254,3 +254,21 @@ known mechanism.
   on a fresh clone (stdlib only).
 - Erratum: the round-2 "Beaufort shadow" bullet is corrected above — the
   shadow does not exist; the exhaustive uniqueness proof stands.
+
+## Round 9 — "the strides we take" as a literal operation, also negative
+
+The plaintext's own instruction was finally executed as a mechanical reading:
+- Cumulative-gap walks (stride sequences of both the shipped ring, last gap 8,
+  and the corrected ring, last gap 6) over the plaintext and the ciphertext,
+  from all 95 start offsets (380 streams): best 12-letter sample "seer tenor
+  sam" — pure noise on random 12-mers.
+- Gaps as a repeating Vigenere/Beaufort/additive key on the ciphertext: best
+  27/95 coverage, below chance.
+- Zip archive-level re-audit: EOCD comment length 0, entry comments/extras
+  empty (confirms round-3 finding at the raw-byte level).
+
+With this, every reading the puzzle's own text instructs (primes = verify the
+ring; squares = the 64 wink; strides = the gap check that catches 91) is
+confirmed as semantic, and every literal cryptographic-mechanical execution of
+those words is null. Final state unchanged: unique autokey plaintext, ring
+answer 89.
