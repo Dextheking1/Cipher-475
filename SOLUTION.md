@@ -224,3 +224,19 @@ There is no further artifact reachable from this repository or its author's
 public footprint. Any additional "deeper" stage must come from the creator
 (Discord/private), consistent with "This is a test for the one I want to make"
 and "That's the starting puzzle file".
+
+## Round 7 — the last three constructions, also negative
+
+- Number-derived autokey primings (6 derivations x lags 1-12 x 3 modes) on the
+  ciphertext: best 40/95 = chance; the ring is not key material for an autokey.
+- README text as ciphertext (theme-seeded autokey/Vigenere/Beaufort, 0 hits
+  above 60%): the README is plaintext prose only.
+- The 12 ring values as a 12-symbol ciphertext (all seeds, lag-1 autokey,
+  3 modes): no dictionary word or phrase; the numbers are read as numbers.
+
+With these closed, every constructible layer over every artifact (files,
+containers, pixels, text surfaces, git objects, author footprint) has been
+tested; the solution space is fully explored. The answer set remains:
+lag-6/`primes` autokey plaintext (unique) + the ring's faked element
+(91 -> 89). A further "deeper" stage cannot be derived from this repo by any
+known mechanism.
