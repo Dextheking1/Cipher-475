@@ -327,3 +327,19 @@ If "only a human who KNEW how it worked" meant a meme-slang seed no English
 wordlist contains, `shrimple`/`supershrimple`/`primeshrimple` would be it.
 All autokey (lag=len) and fixed Vigenere/Beaufort/variant modes: pure noise.
 `primes` remains the unique key (round-13 independent re-proof stands).
+
+## Round 15 — visual confirmation of all 12 ring labels (evidence chain closed)
+
+The record individually verified only the occluded labels (43@1:00, 67@6:00).
+All twelve sectors (0-11 o'clock, clockwise from top, r=440 on the 1259px
+JWFS image) were re-extracted, 4x-upscaled, and viewed as one montage:
+41,43,47,53,59,61,67,71,73,79,83,91 exactly as documented — the three
+previously-unviewed digits (61, 71, 79) read clean, and every label sits in
+its expected sector with no added marks. The ring premise, and with it the
+91-is-fake -> 89 conclusion, now rests on directly-verified perception at
+every step: zip bytes -> PNG -> label glyphs -> unique autokey plaintext ->
+primality analysis.
+
+All evidence is now reproduced end-to-end from the shipped artifact. Nothing
+in the repository remains unverified; nothing beyond it is reachable without
+the author. Final answer: 89.
