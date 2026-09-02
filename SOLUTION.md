@@ -205,3 +205,22 @@ print("".join(chr(97 + p) for p in P))
 Cipher-478's `puzzle (1).zip` was fetched and swept: zero occurrences of any
 475-related string (475/sacred/oracle/primes/shrimp) across the stored nested
 archive bytes; its published payload is unrelated. No cross-puzzle link exists.
+
+## Final round-6 sweeps (all negative — the space is closed)
+
+- Whitespace/Unicode forensics of README.md + oracle: pure ASCII, no zero-width
+  chars, no homoglyphs; 3 double-spaces after sentence periods + 1 trailing space
+  = typing habit, no positional code (offsets 38/111/219/329 map to nothing).
+- High-residual (post-blur addition) scan of the whole PNG: the only sharp objects
+  are the 12 label glyphs and natural point sources; 8 medium sharp blobs in the
+  label ring were visually confirmed as galaxies/stars. No painted markers.
+- Git object layer: commit authorship/timestamps are ordinary web-upload cadence
+  (21:24:05 → 21:24:48 → 21:25:16, single author/email); no message-body stego.
+- GitHub: no Cipher-474/476/477/479 siblings (all 404), no DeleteEvents, no
+  forks/stars/discussions, issue search has no mentions of the puzzle; 478 has
+  nothing 475-related in its published payload or blobs.
+
+There is no further artifact reachable from this repository or its author's
+public footprint. Any additional "deeper" stage must come from the creator
+(Discord/private), consistent with "This is a test for the one I want to make"
+and "That's the starting puzzle file".
