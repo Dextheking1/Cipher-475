@@ -294,3 +294,29 @@ punctuation offsets mapped mod 95 (to plaintext letters) and mod 26 (to
 letters). All outputs are chance strings with zero word structure; the index
 family is closed. No constructible mapping from any artifact number to any
 letter stream remains untested.
+
+## Round 12 — word-length keys (null)
+
+Plaintext word lengths (21 values, sum 95) applied as repeating Vigenere/
+Beaufort/additive keys to the plaintext and ciphertext, plus gap-diff variants:
+no output above chance. The length sequence carries no further cipher.
+
+## Round 13 — adversarial self-audit: uniqueness re-proven, two corrections
+
+Independent implementation (numpy-batched trigram first stage + curated
+common-word exact-cover DP second stage), re-extracting ct from the shipped
+zip, re-scanning every dictionary-word seed x lag 2-12 x autokey mode:
+
+- VERDICT: lag 6 / seed `primes` is unique — score 87/95 (the scorer's
+  3-letter floor caps even the true plaintext at 87) with runner-up `primer`
+  at 26/95; exactly one candidate above 80. Byte-exact re-encryption
+  re-verified on the independent path. The central claim stands.
+- Correction 1: rounds 1-2's "10/21 near-miss primer/trimer" overstated those
+  rivals — greedy scoring against the scrabble-ish web2 list credited their
+  fragments (`inport`, `weta`, `sare`). Under common-word DP they are noise.
+- Correction 2 (amusing): the seed `primes` is NOT in the english_words web2
+  dictionary at all — a pure dictionary scan could have missed the true
+  solution entirely. Its existence was, and is, guaranteed by the README's
+  own instruction plus the byte-exact round-trip, which closes any loophole.
+
+Audit scripts: work/audit13.py. No new layer found; none constructible.
