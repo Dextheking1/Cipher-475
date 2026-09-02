@@ -106,9 +106,12 @@ chance-wording.
 - Exhaustive plaintext-autokey re-run, lags 1–12 × {vigenère, variant, beaufort}
   × seeds = every English word of seed-length L (up to 12 letters) + full 26^L for
   L ≤ 3: **only** lag 6 / seed `primes` survives (18/21 word-slots); next-best is a
-  degenerate 10/21 (`primer`/`trimer` near-misses). The Beaufort variant with
-  `primes` yields "presents are important…" — a cute 10-slot shadow of the real
-  message, i.e. the author planted the theme word so hard it leaks in two modes.
+  degenerate 10/21 (`primer`/`trimer` near-misses). (Erratum, round 8: the "presents are
+  important" Beaufort-shadow bullet in this paragraph was a documentation
+  error from an early unreduced-modulus probe; re-testing every fixed/autokey
+  Vigenere/Beaufort/variant combination on the corrected ciphertext finds no
+  such shadow. Uniqueness of the lag-6 `primes` solution is unaffected — that
+  came from the exhaustive scan itself.)
 - Ciphertext-autokey family (p = c∓c[i−L], p = c[i−L]−c, lags 1–5, deterministic
   seed-independent tails): every tail scores ≤2/21 word-slots → family dead.
 - Arithmetic keystreams p = c ∓ (a·i+b), all 26×26×3: dead (≤6/21).
@@ -240,3 +243,14 @@ tested; the solution space is fully explored. The answer set remains:
 lag-6/`primes` autokey plaintext (unique) + the ring's faked element
 (91 -> 89). A further "deeper" stage cannot be derived from this repo by any
 known mechanism.
+
+## Round 8 — positional micro-sweeps, verifier script, erratum
+
+- Ring-position couplings (n±i, n·i mod 26), stride-ramp keystreams on the
+  plaintext/ciphertext, and ring-order route transpositions: all chance-level.
+- Added `solve.py`: dependency-free verifier — extracts the ciphertext from
+  the shipped zip, proves the lag-6/`primes` autokey decrypt AND byte-exact
+  re-encrypt, flags 91 = 7·13 in the ring and prints ANSWER: 89. Runs green
+  on a fresh clone (stdlib only).
+- Erratum: the round-2 "Beaufort shadow" bullet is corrected above — the
+  shadow does not exist; the exhaustive uniqueness proof stands.
