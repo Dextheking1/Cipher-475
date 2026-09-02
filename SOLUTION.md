@@ -284,3 +284,13 @@ answer 89.
   (EOCD clean). Artifact is exhausted; final answer 89 stands.
 - SUBMISSION.txt added: the plain-text answer chain for "send your first
   answer and we'll take it from there".
+
+## Round 11 — absolute ring-index reads (the last index mapping), null
+
+The plaintext's sentence invites using the ring numbers as positions, not just
+strides. Executed every variant: ring (shipped and corrected) as 0-/1-based
+indices into plaintext and ciphertext (12-char extracts), and the oracle's 23
+punctuation offsets mapped mod 95 (to plaintext letters) and mod 26 (to
+letters). All outputs are chance strings with zero word structure; the index
+family is closed. No constructible mapping from any artifact number to any
+letter stream remains untested.
