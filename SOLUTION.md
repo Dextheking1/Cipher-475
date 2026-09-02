@@ -272,3 +272,15 @@ ring; squares = the 64 wink; strides = the gap check that catches 91) is
 confirmed as semantic, and every literal cryptographic-mechanical execution of
 those words is null. Final state unchanged: unique autokey plaintext, ring
 answer 89.
+
+## Round 10 — word-length/punctuation carrier test (null) + SUBMISSION.txt
+
+- Plaintext word lengths (21 words, summing to 95 = ciphertext length, i.e.
+  exactly the letters already accounted for), their mod-26 letters, diffs and
+  cumulative sums, and sentence counts 3/3/15: no ring coupling, no words.
+- The oracle's spaces/periods reproduce the plaintext's word boundaries
+  character-for-character: authorial formatting, not a carrier.
+- Round 9's three negative families confirmed again at the byte level
+  (EOCD clean). Artifact is exhausted; final answer 89 stands.
+- SUBMISSION.txt added: the plain-text answer chain for "send your first
+  answer and we'll take it from there".

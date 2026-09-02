@@ -1,0 +1,38 @@
+SUBMISSION — Sacred Numbers (#475)
+====================================
+
+First answer, per "send your first answer and we'll take it from there":
+
+89
+
+Supporting chain (in the order it was derived):
+
+1. The ring is 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 91.
+   Eleven consecutive primes and one impostor: 91 = 7 x 13.
+   "primes are important" = verify every entry.
+   "squares are important" = the shipped (faked) ring has mean 768/12 =
+   64 = 8^2, a perfect square bought by the impostor; the honest ring
+   (with 89) averages 766/12, no such property.
+   "the strides we take often reveal the meaning" = the gaps
+   2,4,6,6,2,6,4,2,6,4,8 break the prime-gapped pattern at 91;
+   the true twelfth term is 83 + 6 = 89.
+
+2. Oracle decrypts with the README rule — autokey, priming keyword "primes"
+   (6 letters, so lag 6):
+
+   "primes are important. squares are important. the strides we take
+   often reveal the meaning of our life as we take them."
+
+   Verified both directions: the re-encryption of this plaintext reproduces
+   the shipped 95-letter ciphertext byte-exactly. A full-scan over lags 1-12,
+   all Vigenere/Beaufort/variant modes and every word-seed of matching length
+   finds this as the unique solution.
+
+3. Reproduction: python3 solve.py   (stdlib only; extracts the ciphertext from
+   Sacred_numbers.zip, proves decrypt+re-encrypt, flags 91, prints 89).
+
+If "we'll take it from there" means a next step exists, it is not constructible
+from anything shipped in this repository: nine documented sweeps (containers,
+bit planes, pixel forensics, whitespace/Unicode, cipher families, positional
+and stride readings, git objects, archive internals, author OSINT) are all
+recorded negative in SOLUTION.md. The answer to the puzzle as shipped is 89.
